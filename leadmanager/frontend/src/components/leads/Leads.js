@@ -9,6 +9,10 @@ export class Leads extends Component {
     leads: PropTypes.array.isRequired
   };
 
+  componentDidMount() {
+    this.props.getLeads();
+  }
+
   render() {
     return (
       <div>
@@ -22,4 +26,4 @@ const mapStateToProps = state => ({
   leads: state.leads.leads
 });
 
-export default connect(mapStateToProps)(Leads);
+export default connect(mapStateToProps, { getLeads })(Leads);
