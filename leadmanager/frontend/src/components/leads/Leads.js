@@ -1,8 +1,14 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 // 모든 구성 요소에서 redux를 사용하려면 connect를 사용해야 한다.
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getLeads } from '../../actions/leads';
+import Table from '@material-ui/core/Table';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
+import { TableBody, TableHead } from "@material-ui/core";
+import Button from '@material-ui/core/Button';
+
 
 export class Leads extends Component {
   static propTypes = {
@@ -15,9 +21,31 @@ export class Leads extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Lead List</h1>
-      </div>
+      <Fragment>
+        <h2>Lead List</h2>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>ID</TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>Message</TableCell>
+              <TableCell />
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            { this.props.leads.map(lead => (
+              <TableRow key={lead.id}>
+                <TableCell>{lead.id}</TableCell>
+                <TableCell>{lead.name}</TableCell>
+                <TableCell>{lead.email}</TableCell>
+                <TableCell>{lead.message}</TableCell>
+                <TableCell><Button variant="outlined" color="secondary">Delete</Button></TableCell>
+              </TableRow>
+            )) }
+          </TableBody>
+        </Table>
+      </Fragment>
     );
   }
 }
