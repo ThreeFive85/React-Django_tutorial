@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 // 모든 구성 요소에서 redux를 사용하려면 connect를 사용해야 한다.
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getLeads } from '../../actions/leads';
+import { getLeads, deleteLead } from '../../actions/leads';
 import Table from '@material-ui/core/Table';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
@@ -40,7 +40,8 @@ export class Leads extends Component {
                 <TableCell>{lead.name}</TableCell>
                 <TableCell>{lead.email}</TableCell>
                 <TableCell>{lead.message}</TableCell>
-                <TableCell><Button variant="outlined" color="secondary">Delete</Button></TableCell>
+                <TableCell><Button onClick={this.props.deleteLead.bind(this, lead.id)} 
+                variant="outlined" color="secondary">Delete</Button></TableCell>
               </TableRow>
             )) }
           </TableBody>
@@ -54,4 +55,4 @@ const mapStateToProps = state => ({
   leads: state.leads.leads
 });
 
-export default connect(mapStateToProps, { getLeads })(Leads);
+export default connect(mapStateToProps, { getLeads, deleteLead })(Leads);
