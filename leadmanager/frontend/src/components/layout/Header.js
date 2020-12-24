@@ -10,7 +10,7 @@ export class Header extends Component {
         <AppBar position="static">
           <Toolbar>
             <Typography variant="title" color="inherit">
-              Read Manager
+              Lead Manager
             </Typography>
           </Toolbar>
         </AppBar>
