@@ -3,20 +3,32 @@ import ReactDom from "react-dom";
 
 import Header from "./layout/Header";
 import Dashboard from "./leads/Dashboard";
+import Alerts from './layout/Alerts';
+
+import { Provider as AlertProvider, positions } from 'react-alert';
+import AlertMUITemplate from 'react-alert-template-mui';
 
 import { Provider } from "react-redux";
 import store from "../store";
+
+// Alert Options
+const alertOptions = {
+  position: positions.MIDDLE
+}
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
+      <AlertProvider template={AlertMUITemplate}{...alertOptions}>
         <Fragment>
           <Header />
+          <Alerts />
           <div className="container">
             <Dashboard />
           </div>
         </Fragment>
+        </AlertProvider>
       </Provider>
     );
   }
