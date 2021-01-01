@@ -20,7 +20,7 @@ export const getLeads = () => dispatch => {
 export const deleteLead = (id) => dispatch => {
     axios.delete(`/api/leads/${id}/`)
     .then(res => {
-        dispatch(createMessage({ deleteLead: "Lead Deleted"}));
+        dispatch(createMessage({ deleteLead: "메세지가 삭제되었습니다."}));
         dispatch({
             type: DELETE_LEAD,
             payload: id
@@ -33,6 +33,7 @@ export const deleteLead = (id) => dispatch => {
 export const addLead = (lead) => dispatch => {
     axios.post('/api/leads/', lead)
     .then(res => {
+        dispatch(createMessage({ addLead: "메세지가 등록되었습니다."}));
         dispatch({
             type: ADD_LEAD,
             payload: res.data
