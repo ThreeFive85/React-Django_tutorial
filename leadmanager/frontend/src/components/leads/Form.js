@@ -125,6 +125,7 @@ export class Form extends Component {
     const lead = { name, email, message };
     console.log(lead)
     this.props.addLead(lead);
+    e.target.reset()
   }
 
   render() {
