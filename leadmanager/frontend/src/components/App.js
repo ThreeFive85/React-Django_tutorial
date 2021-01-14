@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import ReactDom from "react-dom";
+import { HashRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 
 import Header from "./layout/Header";
 import Dashboard from "./leads/Dashboard";
@@ -21,13 +22,15 @@ class App extends Component {
     return (
       <Provider store={store}>
       <AlertProvider template={AlertMUITemplate}{...alertOptions}>
-        <Fragment>
-          <Header />
-          <Alerts />
-          <div className="container">
-            <Dashboard />
-          </div>
-        </Fragment>
+        <Router>
+          <Fragment>
+            <Header />
+            <Alerts />
+            <div className="container">
+              <Route exact path="/" component={Dashboard} />
+            </div>
+          </Fragment>
+        </Router>
         </AlertProvider>
       </Provider>
     );
