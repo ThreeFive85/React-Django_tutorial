@@ -1,7 +1,10 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 export class Header extends Component {
   render() {
@@ -9,9 +12,17 @@ export class Header extends Component {
       <div>
         <AppBar position="static">
           <Toolbar>
-            <Typography variant="title" color="inherit">
+            <Typography variant="h5">
               Lead Manager
             </Typography>
+            <Grid container justify="flex-end">
+              <Link style={{ textDecoration: 'none', color:"white" }} to="/register">
+                <Button color="inherit">Register</Button>
+              </Link>
+              <Link style={{ textDecoration: 'none', color:"white" }} to="/login">
+                <Button color="inherit">Login</Button>
+              </Link>
+            </Grid>
           </Toolbar>
         </AppBar>
       </div>
