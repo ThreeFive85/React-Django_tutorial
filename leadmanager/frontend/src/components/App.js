@@ -5,6 +5,8 @@ import { HashRouter as Router, Route, Switch, Redirect } from "react-router-dom"
 import Header from "./layout/Header";
 import Dashboard from "./leads/Dashboard";
 import Alerts from './layout/Alerts';
+import Register from './accounts/Register';
+import Login from './accounts/Login';
 
 import { Provider as AlertProvider, positions } from 'react-alert';
 import AlertMUITemplate from 'react-alert-template-mui';
@@ -27,7 +29,11 @@ class App extends Component {
             <Header />
             <Alerts />
             <div className="container">
-              <Route exact path="/" component={Dashboard} />
+              <Switch>
+                <Route exact path="/" component={Dashboard} />
+                <Route exact path="/register" component={Register} />
+                <Route exact path="/login" component={Login} />
+              </Switch>
             </div>
           </Fragment>
         </Router>
