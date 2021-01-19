@@ -15,7 +15,7 @@ export class Header extends Component {
             <Typography variant="h5">
               Lead Manager
             </Typography>
-            <Grid container justify="flex-end">
+            <Grid container justify="flex-end" item xs={10} sm={16}>
               <Link style={{ textDecoration: 'none', color:"white" }} to="/register">
                 <Button color="inherit">Register</Button>
               </Link>
