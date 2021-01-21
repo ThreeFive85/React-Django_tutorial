@@ -11,9 +11,9 @@ export class Alerts extends Component {
 
     componentDidUpdate(prevProps) {
         const { error, alert, message } = this.props;
-        if (error !== prevProps.error) {
-            if (error.msg.email) alert.error(`Email: ${error.msg.email.join()}`)
-        }
+        // if (error !== prevProps.error) {
+        //     if (error.msg.email) alert.error(`Email: ${error.msg.email.join()}`)
+        // }
         if (message !== prevProps.message){
             if (message.deleteLead) alert.success(message.deleteLead);
             if (message.addLead) alert.success(message.addLead);
