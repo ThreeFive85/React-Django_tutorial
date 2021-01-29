@@ -10,7 +10,7 @@ from django.core.exceptions import PermissionDenied
 
 class LeadViewSet(viewsets.ModelViewSet):
     # queryset = Lead.objects.all()
-    permissions_classes = (
+    permission_classes = (
         permissions.IsAuthenticated,
     )
 
