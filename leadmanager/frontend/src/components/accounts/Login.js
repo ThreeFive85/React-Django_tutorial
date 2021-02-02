@@ -3,7 +3,10 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import { Link } from '@material-ui/core';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { login } from '../../actions/auth';
 
 export class Login extends Component {
     state = {
@@ -11,16 +14,24 @@ export class Login extends Component {
         password: ''
     }
 
+    static propTypes = {
+      login: PropTypes.func.isRequired,
+      isAuthenticated: PropTypes.bool
+    }
+
   onChangeName = (e) => this.setState({ username: e.target.value });
   onChangePW1 = (e) => this.setState({ password: e.target.value });
 
   onSubmit = e => {
     e.preventDefault();
-    // const { username, email, password, password2 } = this.state;
-    console.log('submit')
+    console.log(this.props.login)
+    this.props.login(this.state.username, this.state.password);
   }
 
   render() {
+    if (this.props.isAuthenticated) {
+      return <Redirect to='/' />;
+    }
     const { username, password } = this.state;
     return(
       <Typography component="div" variant="body1">
@@ -63,10 +74,10 @@ export class Login extends Component {
                   marginTop: 0,
                 }}
                 getvalue={password}
-                onChange={this.onChangeMessage}
+                onChange={this.onChangePW1}
                 />
               </div>
-              <Button type='submit' color="primary" style={{marginLeft: '15%'}}>Login</Button>
+              <Button type='submit' color="primary" style={{marginLeft: '15%'}} >Login</Button>
               <p align="center">
                   Don't hava an account? <Link to="/register">Register</Link>
               </p>
@@ -78,4 +89,9 @@ export class Login extends Component {
   }
 }
 
-export default Login
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { login })(Login);
+// export default Login;
