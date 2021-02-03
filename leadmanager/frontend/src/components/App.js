@@ -6,7 +6,7 @@ import Header from "./layout/Header";
 import Dashboard from "./leads/Dashboard";
 import Alerts from './layout/Alerts';
 import Register from './accounts/Register';
-import Login from './accounts/Login';
+import { Login } from './accounts/Login';
 import PrivateRoute from './common/PrivateRoute';
 
 import { Provider as AlertProvider, positions } from 'react-alert';
